@@ -1,2 +1,2 @@
-# FantasyGrounds
-Content for use in Fantasy Grounds.
+# ExtendedRest
+An extension for Fantasy Grounds adding support for extended rests.
