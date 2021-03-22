@@ -8,8 +8,8 @@ local bIsExtended = false;
 
 -- Initialization
 function onInit()
-    originalReset = PowerManager.resetPowers;
-    PowerManager.resetPowers = newPowerReset;
+	originalReset = PowerManager.resetPowers;
+	PowerManager.resetPowers = newPowerReset;
 end
 
 function beginExtended()
@@ -17,16 +17,20 @@ function beginExtended()
 end
 
 function endExtended()
-    bIsExtended = false;
+	bIsExtended = false;
+end
+
+function isExtended()
+	return bIsExtended;
 end
 
 -- Copied lookup logic from manager_power.lua
 function newPowerReset(nodeCaster, bLong)
-    -- Short rests aren't the bad guy and long rests normally do what we want an extended rest to.
-    if bIsExtended or not bLong then
-        originalReset(nodeCaster, bLong);
-        return nil;
-    end
+	-- Short rests aren't the bad guy and long rests normally do what we want an extended rest to.
+	if bIsExtended or not bLong then
+		originalReset(nodeCaster, bLong);
+		return nil;
+	end
 
 	local aListGroups = {};
 	
@@ -45,8 +49,8 @@ function newPowerReset(nodeCaster, bLong)
 		end
 	end
 	
-    -- Get original extended rest uses.
-    local powerUses = {};
+	-- Get original extended rest uses.
+	local powerUses = {};
 	for _,vPower in pairs(DB.getChildren(nodeCaster, "powers")) do
 		local bReset = true;
 
@@ -66,12 +70,12 @@ function newPowerReset(nodeCaster, bLong)
 				end
 			end
 		end
-    end
-    
-    originalReset(nodeCaster, bLong)
+	end
+	
+	originalReset(nodeCaster, bLong)
 
-    for power,uses in pairs(powerUses) do
-        DB.setValue(power, "cast", "number", uses);
-    end
+	for power,uses in pairs(powerUses) do
+		DB.setValue(power, "cast", "number", uses);
+	end
 
 end

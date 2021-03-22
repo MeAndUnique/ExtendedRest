@@ -2,10 +2,10 @@
 <root release="3.0" version="3">
 	<properties>
 		<name>5E - Extended Rest</name>
-		<version>1.0.1</version>
+		<version>1.1.0</version>
 		<loadorder>50</loadorder>
 		<author>MeAndUnique</author>
-		<description>Adds support for an Extended Rest and Powers that refresh during</description>
+		<description>Adds support for an Extended Rest and Powers that refresh during one.</description>
 		
 		<ruleset>
 			<name>5E</name>
@@ -21,7 +21,7 @@
 		<script name="ExtendedRest" file="scripts/ExtendedRest.lua"/>
 				
 		<windowclass name="charsheet" merge="join">
-            <script file="scripts/char.lua"/>
+			<script file="scripts/char.lua"/>
 		</windowclass>
 				
 		<windowclass name="combattracker_host" merge="join">
